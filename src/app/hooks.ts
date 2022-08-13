@@ -1,6 +1,13 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "./store";
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IRobot } from "../interfaces/interfaces";
+import { RobotsRepository } from "./repository/robotRepository";
+import { RootState } from "./store";
 
-// Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useApiData = (url: string) => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state);
+  const repoRobots = useMemo(() => new RobotsRepository<IRobot>(url), [url]);
+
+  return { dispatch, state, repoRobots };
+};
