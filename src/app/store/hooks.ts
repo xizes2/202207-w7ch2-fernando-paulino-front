@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IRobot } from "../interfaces/interfaces";
-import { RobotsRepository } from "./repository/robotRepository";
+import { loadRobots } from "../../features/robots/robotsSlice";
+import { IRobot } from "../../interfaces/interfaces";
+import { RobotsRepository } from "../repository/robotRepository";
 import { RootState } from "./store";
 
 export const useApiData = (url: string) => {
@@ -9,5 +10,10 @@ export const useApiData = (url: string) => {
   const state = useSelector((state: RootState) => state);
   const repoRobots = useMemo(() => new RobotsRepository<IRobot>(url), [url]);
 
-  return { dispatch, state, repoRobots };
+  const handlerLoadRobots = async () => {
+    const robots = await repoRobots.loadAll();
+    await dispatch(loadRobots(robots));
+  };
+
+  return { dispatch, state, handlerLoadRobots };
 };

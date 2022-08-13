@@ -3,7 +3,7 @@ import { Robots } from "./model/Robot";
 
 const initialRobotState: Robots = [];
 
-export const robotsSlice = createSlice({
+const robotsSlice = createSlice({
   name: "robots",
   initialState: initialRobotState,
   reducers: {
