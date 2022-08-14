@@ -1,6 +1,5 @@
-import { renderHook, RenderHookResult } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { loadRobots } from "../../features/robots/robotsSlice";
 import { RobotsRepository } from "../repository/robotRepository";
 import { useApiData } from "./hooks";
 import { store } from "./store";
