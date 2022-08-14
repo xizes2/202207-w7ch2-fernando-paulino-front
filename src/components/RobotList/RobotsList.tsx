@@ -17,15 +17,32 @@ const RobotsList = (): JSX.Element => {
   }, []);
 
   return (
-    <>
-      <RobotsListStyled>
-        <ul className="robots-list">
-          {robotList.robots.map((robot) => (
-            <li className="robot-item">{robot.name}</li>
-          ))}
-        </ul>
-      </RobotsListStyled>
-    </>
+    <RobotsListStyled className="robots-list">
+      <h2 className="robots-list__title">Robots List</h2>
+      {robotList.robots.map((robot) => (
+        <li key={robot.name} className="robot-item">
+          {robot.name}
+          <img
+            className="robot-item__image"
+            src={robot.picture}
+            alt={`Robot with name ${robot.name}`}
+            height={400}
+            width={400}
+          />
+          <div className="robot__skills">
+            <span className="robot__skills speed">
+              Speed: {robot.skills.speed}
+            </span>
+            <span className="robot__skills endurance">
+              Endurance: {robot.skills.endurance}
+            </span>
+            <span className="robot__skills creationDate">
+              Creation Date: {robot.skills.creationDate}
+            </span>
+          </div>
+        </li>
+      ))}
+    </RobotsListStyled>
   );
 };
 
