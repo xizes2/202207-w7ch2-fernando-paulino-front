@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useApiData } from "../app/store/hooks";
-import { RootState } from "../app/store/store";
+import { useApiData } from "../../app/store/hooks";
+import { RootState } from "../../app/store/store";
 
 const apiUrl = process.env.REACT_APP_APIURL as string;
 
