@@ -5,7 +5,7 @@ import { IRobot } from "../../interfaces/interfaces";
 import { RobotsRepository } from "../repository/robotRepository";
 
 export const useApiData = (url: string) => {
-  const dispatch = useDispatch();
+  let dispatch = useDispatch();
   const repoRobots = useMemo(() => new RobotsRepository<IRobot>(url), [url]);
 
   const handlerLoadRobots = async () => {
