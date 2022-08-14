@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useApiData } from "../../app/store/hooks";
 import { RootState } from "../../app/store/store";
+import RobotsListStyled from "./RobotListStyled";
 
 const apiUrl = process.env.REACT_APP_APIURL as string;
 
@@ -16,11 +17,15 @@ const RobotsList = (): JSX.Element => {
   }, []);
 
   return (
-    <ul className="robots-list">
-      {robotList.robots.map((robot) => (
-        <li className="robot-item">{robot.name}</li>
-      ))}
-    </ul>
+    <>
+      <RobotsListStyled>
+        <ul className="robots-list">
+          {robotList.robots.map((robot) => (
+            <li className="robot-item">{robot.name}</li>
+          ))}
+        </ul>
+      </RobotsListStyled>
+    </>
   );
 };
 
