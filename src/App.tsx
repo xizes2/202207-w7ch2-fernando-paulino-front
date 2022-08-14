@@ -1,7 +1,8 @@
 import "./App.css";
+import RobotsList from "./components/RobotsList";
 
 function App() {
-  return <div>Robots</div>;
+  return <RobotsList />;
 }
 
 export default App;
