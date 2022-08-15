@@ -1,36 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Robots } from "./model/Robot";
+import { Robot, Robots } from "./model/Robot";
 
-const initialRobotState: Robots = [
-  {
-    name: "sudamericanos",
-    picture: "https://freesvg.org/img/Blue-Robot.png",
-    skills: {
-      speed: 1,
-      endurance: 2,
-      creationDate: "06/96",
-    },
-  },
-  {
-    name: "umbanda",
-    picture: "https://freesvg.org/img/robot-color.png",
-    skills: {
-      speed: 5,
-      endurance: 7,
-      creationDate: "06/22",
-    },
-  },
-];
+const initialRobotState: Robots = [];
 
 const robotsSlice = createSlice({
   name: "robots",
   initialState: initialRobotState,
   reducers: {
-    loadRobots: (state, action: PayloadAction<Robots>) => action.payload,
+    loadRobots: (state, action: PayloadAction<Robots>) => [...action.payload],
+    createRobot: (state, action: PayloadAction<Robot>) => [
+      ...state,
+      action.payload,
+    ],
   },
 });
 
-export const { loadRobots } = robotsSlice.actions;
+export const { loadRobots, createRobot } = robotsSlice.actions;
 const robotReducer = robotsSlice.reducer;
 
 export default robotReducer;

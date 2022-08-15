@@ -8,14 +8,11 @@ const apiUrl = process.env.REACT_APP_APIURL as string;
 
 const RobotsList = (): JSX.Element => {
   const { handlerLoadRobots } = useApiData(apiUrl);
-
   const robotList = useSelector((state: RootState) => state);
-
   useEffect(() => {
     handlerLoadRobots();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <RobotsListStyled className="robots-list">
       <h2 className="robots-list__title">Robots List</h2>
@@ -24,7 +21,7 @@ const RobotsList = (): JSX.Element => {
           {robot.name}
           <img
             className="robot-item__image"
-            src={robot.picture}
+            src={robot.img}
             alt={`Robot with name ${robot.name}`}
             height={400}
             width={400}

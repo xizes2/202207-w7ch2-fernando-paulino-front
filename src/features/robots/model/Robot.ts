@@ -1,6 +1,6 @@
 export interface Robot {
   name: string;
-  picture: string;
+  img: string;
   skills: {
     speed: number;
     endurance: number;
