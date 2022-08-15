@@ -8,7 +8,7 @@ describe("Given a robotsSlice function", () => {
       const robot: Robot[] = [
         {
           name: "",
-          picture: "",
+          img: "",
           skills: {
             speed: 0,
             endurance: 0,

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { loadRobots } from "../../features/robots/robotsSlice";
+import { Robot } from "../../features/robots/model/Robot";
+import { createRobot, loadRobots } from "../../features/robots/robotsSlice";
 import { IRobot } from "../../interfaces/interfaces";
 import { RobotsRepository } from "../repository/robotRepository";
 
@@ -13,5 +14,10 @@ export const useApiData = (url: string) => {
     await dispatch(loadRobots(robots.robots));
   };
 
-  return { handlerLoadRobots };
+  const handlerCreateRobot = async (robot: Robot) => {
+    const newRobot = await repoRobots.add(robot);
+    await dispatch(createRobot(newRobot.robot));
+  };
+
+  return { handlerLoadRobots, handlerCreateRobot };
 };
