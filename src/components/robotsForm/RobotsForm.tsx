@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from "react";
 import { useApiData } from "../../app/store/hooks";
 import { Robot } from "../../features/robots/model/Robot";
+import RobotFormStyled from "./RobotFormStyled";
 
 const apiUrl = `${process.env.REACT_APP_APIURL}/create`;
 
@@ -33,7 +34,7 @@ const RobotsForm = (): JSX.Element => {
   };
 
   return (
-    <form className="robots-form" onSubmit={createRobotOnSubmit}>
+    <RobotFormStyled className="robots-form" onSubmit={createRobotOnSubmit}>
       <div className="form-container">
         <label htmlFor="name" className="label-name">
           Robot Name:
@@ -118,7 +119,7 @@ const RobotsForm = (): JSX.Element => {
       <button type="submit" disabled={hasEmptyFields}>
         Create Robot!
       </button>
-    </form>
+    </RobotFormStyled>
   );
 };
 
