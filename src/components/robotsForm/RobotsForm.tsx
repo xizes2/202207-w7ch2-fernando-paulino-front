@@ -3,7 +3,7 @@ import { useApiData } from "../../app/store/hooks";
 import { Robot } from "../../features/robots/model/Robot";
 import RobotFormStyled from "./RobotFormStyled";
 
-const apiUrl = `${process.env.REACT_APP_APIURL}/create`;
+const apiUrl = `${process.env.REACT_APP_APIURL}/robots/create`;
 
 const RobotsForm = (): JSX.Element => {
   const { handlerCreateRobot } = useApiData(apiUrl);
@@ -16,6 +16,7 @@ const RobotsForm = (): JSX.Element => {
       endurance: 0,
       creationDate: "",
     },
+    owner: "",
   };
 
   const [newRobot, setNewRobot] = useState(initialRobot);

@@ -8,6 +8,7 @@ import { RobotsRepository } from "../repository/robotRepository";
 export const useApiData = (url: string) => {
   let dispatch = useDispatch();
   const repoRobots = useMemo(() => new RobotsRepository<IRobot>(url), [url]);
+  // const {user} =
 
   const handlerLoadRobots = async () => {
     const robots = await repoRobots.loadAll();
@@ -15,6 +16,14 @@ export const useApiData = (url: string) => {
   };
 
   const handlerCreateRobot = async (robot: Robot) => {
+    fetch(`${url}create`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application-json",
+        // Authorization: `Bearer ${user.token}`,
+      },
+    });
+    // JSON.stringify(newRobot);
     const newRobot = await repoRobots.add(robot);
     await dispatch(createRobot(newRobot.robot));
   };

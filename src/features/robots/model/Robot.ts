@@ -6,6 +6,7 @@ export interface Robot {
     endurance: number;
     creationDate: string;
   };
+  owner: string;
 }
 
 export type Robots = Robot[];

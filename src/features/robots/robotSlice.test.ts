@@ -14,6 +14,7 @@ describe("Given a robotsSlice function", () => {
             endurance: 0,
             creationDate: "",
           },
+          owner: "",
         },
       ];
       const newState = robotReducer(initialState, loadRobots(robot));

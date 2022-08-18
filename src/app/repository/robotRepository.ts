@@ -5,7 +5,7 @@ export class RobotsRepository<T extends Item> implements IRobotsRepository<T> {
   constructor(public url: string) {}
 
   loadAll() {
-    return fetch(this.url, { mode: "cors" }).then((response) =>
+    return fetch(`${this.url}robots`, { mode: "cors" }).then((response) =>
       response.json()
     );
   }
